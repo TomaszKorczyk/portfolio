@@ -8,7 +8,7 @@ h1 {
 }
 
 .footer {
-    color: wheat;
-    justify-content: end;
-    align-content: center;
+    color: pink;
+    border: dashed 2px greenyellow;
+    letter-spacing: 5px;
 }
