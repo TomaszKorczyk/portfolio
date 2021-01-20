@@ -1,3 +1,3 @@
-https://tomaszkorczyk.github.io/portfolio/ 
 
-My link
+[My link]https://tomaszkorczyk.github.io/portfolio/ 
+
