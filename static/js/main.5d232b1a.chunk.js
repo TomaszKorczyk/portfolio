@@ -1,0 +1,2 @@
+(this.webpackJsonpportfolio=this.webpackJsonpportfolio||[]).push([[0],{10:function(t,e,r){"use strict";r.r(e);var n=r(0),o=(r(1),r(4)),i=r.n(o);r(3);var s=function(t){var e=t.title;return Object(n.jsx)("div",{className:"bg-gray-600 text-white text-center p-5 border",children:Object(n.jsx)("div",{children:e})})};i.a.render(Object(n.jsx)(s,{title:"Jak si\u0119 masz moja su\u0142tanko :* ?"}),document.getElementById("root"))},3:function(t,e,r){}},[[10,1,2]]]);
+//# sourceMappingURL=main.5d232b1a.chunk.js.map
