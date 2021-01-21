@@ -1,9 +1,9 @@
 import React from "react";
-import "./assets/css/style.css";
+import "./assets/css/tailwind.css";
 
 function App({title}) {
     return (
-        <div className="bg-gray text-white p-5 border">
+        <div className="bg-gray-600 text-white text-center p-5 border">
             <div>{title}</div>
         </div>
     );
