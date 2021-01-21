@@ -6,3 +6,6 @@
 <a href="https://tomaszkorczyk.github.io/portfolio" target="_blank" >
     <img src="https://tomaszkorczyk.github.io/portfolio" alt="nie działa">
 </a>
+<div align="center">
+  <a href="https://tomaszkorczyk.github.io/portfolio"><img src="https://tomaszkorczyk.github.io/portfolio" alt="IMAGE ALT TEXT"></a>
+</div>
