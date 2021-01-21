@@ -1,6 +1,5 @@
+import React from "react";
 import ReactDOM from "react-dom";
+import App from "./App";
 
-let el = "Hello World!";
-
-
-ReactDOM.render(el, document.getElementById("root"));
+ReactDOM.render( < App title="Jak się masz moja sułtanko :* ?" /> , document.getElementById("root"));
