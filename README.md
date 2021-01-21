@@ -2,4 +2,7 @@
 [Web][1]
 
 [1]:https://tomaszkorczyk.github.io/portfolio "target=_blank"
-<a href="http://tomaszkorczyk.github.io/portfolio" target="_blank" rel="noopener noreferrer">my link</a>
+<a href="https://tomaszkorczyk.github.io/portfolio" target="_blank" >my link</a>
+<a href="https://tomaszkorczyk.github.io/portfolio" target="_blank" >
+    <img src="https://tomaszkorczyk.github.io/portfolio" alt="nie działa">
+</a>
