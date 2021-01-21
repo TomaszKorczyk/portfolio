@@ -1,2 +1,2 @@
 
-[My link](https://tomaszkorczyk.github.io/portfolio){:target="_blank"}
+[My link](https://tomaszkorczyk.github.io/portfolio/){:target="_blank"}
