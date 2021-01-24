@@ -8,7 +8,7 @@ import "./assets/css/tailwind.css";
 //         </div>
 //     );
 // }
-class App extends Component {
+class App extends React.Component {
 
     constructor(props){
         super(props);
