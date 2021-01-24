@@ -1,2 +1,0 @@
-(this.webpackJsonpportfolio=this.webpackJsonpportfolio||[]).push([[0],{10:function(t,e,r){"use strict";r.r(e);var i=r(0),n=(r(1),r(4)),o=r.n(n);r(3);var c=function(t){var e=t.title;return Object(i.jsx)("div",{className:"bg-gray-600 text-white text-center p-5 border",children:Object(i.jsx)("div",{children:e})})};o.a.render(Object(i.jsx)(c,{title:"Jak si\u0119 masz ?"}),document.getElementById("root"))},3:function(t,e,r){}},[[10,1,2]]]);
-//# sourceMappingURL=main.824d6d59.chunk.js.map
