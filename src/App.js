@@ -19,8 +19,9 @@ class App extends React.Component {
         return(
             <section className="flex justify-center">
                 <div className="w-1/2">
-                    <div className="my-4">{this.state.title}</div>
+                    <div className="my-4 text-white">{this.state.title}</div>
                 </div>
+                <button className="p-1 bg-white text-blue-600">Toogle Image</button>
             </section>
         );        
     }
