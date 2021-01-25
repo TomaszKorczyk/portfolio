@@ -36,11 +36,11 @@ export default function Images() {
                 <ShowImage />
             </div>
             <div className="flex justify-around my-3">
-                <input 
+                <input
                     type="text"
                     className="p-2 border border-gray-800 shadow rounded w-8/12 h-full"
                 />
-                <button 
+                <button
                     className="p-2 bg-green-700 text-white font-bold rounded w-3/12 overflow-clip overflow-hidden"
                     onClick={handleAdd}
                 >
