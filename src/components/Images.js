@@ -35,18 +35,18 @@ export default function Images() {
             <div className="flex flex-wrap justify-center">
                 <ShowImage />
             </div>
-                <div className="flex justify-around my-3">
-                    <input 
-                        type="text"
-                        className="p-2 border border-gray-800 shadow rounded"
-                    />
-                    <button 
-                        className="p-2 bg-green-700 text-white font-bold rounded"
-                        onClick={handleAdd}
-                    >
-                        Add new
-                    </button>
-                </div>
+            <div className="flex justify-around my-3">
+                <input 
+                    type="text"
+                    className="p-2 border border-gray-800 shadow rounded w-3/5 "
+                />
+                <button 
+                    className="p-2 bg-green-700 text-white font-bold rounded w-1/5"
+                    onClick={handleAdd}
+                >
+                    Add new
+                </button>
+            </div>
         </section>
     );
 }
