@@ -12,7 +12,7 @@ export default function Images() {
     function ShowImage() {
         return images.map((image) => {
             return(
-                <div className="w-1/3">
+                <div className="w-1/4 flex justify-center">
                     <img 
                         src={image} 
                         width="150"
@@ -38,10 +38,10 @@ export default function Images() {
             <div className="flex justify-around my-3">
                 <input 
                     type="text"
-                    className="p-2 border border-gray-800 shadow rounded w-3/5 "
+                    className="p-2 border border-gray-800 shadow rounded w-3/5 h-full"
                 />
                 <button 
-                    className="p-2 bg-green-700 text-white font-bold rounded w-1/5"
+                    className="p-2 bg-green-700 text-white font-bold rounded w-1/5 overflow-hidden"
                     onClick={handleAdd}
                 >
                     Add new

@@ -30,9 +30,9 @@ function App() {
     }
 
     return (
-        <section className="flex justify-center">
+        <section className="justify-center">
             {console.log('re-rendered')}
-            <div className="w-1/2">
+            <div className="flex flex-wrap justify-center">
                 <div className="text-center">
                     <div className="my-4 text-white italic font-semibold">
                         {title}
@@ -44,8 +44,8 @@ function App() {
                         Toogle Image
                     </button>
                 </div>
-                {isShowing ? <Images /> : null}
             </div>
+                {isShowing ? <Images /> : null}
         </section>
     );
 }
