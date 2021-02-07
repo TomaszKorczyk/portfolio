@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./assets/css/tailwind.css";
 import Images from "./components/Images";
 
@@ -31,17 +31,20 @@ function Login() {
     )
 
 }
+
 function App() {
     return <Router>
-        <Route path="/">
-            <Home />
-        </Route>
-        <Route path="/login">
-            <Login />
-        </Route>
-        <Route path="/gallery">
-            <Gallery />
-        </Route>
+        <Switch>
+            <Route path="/" exact={true}>
+                <Home />
+            </Route>
+            <Route path="/login">
+                <Login />
+            </Route>
+            <Route path="/gallery">
+                <Gallery />
+            </Route>
+        </Switch>
     </Router>
 }
 
