@@ -1,51 +1,51 @@
-import React,{useState, useEffect, useRef} from "react";
+import React,{useState} from "react";
 import "./assets/css/tailwind.css";
 import Images from "./components/Images";
 
 function App() {
     const [title, setTitle] = useState("Hello React");
-    const [isShowing, setIsShowing] = useState(false);
-    const [didMount, setDidMount] = useState(false);
-    const mountRef = useRef(false);
+    // const [isShowing, setIsShowing] = useState(false);
+    // const [didMount, setDidMount] = useState(false);
+    // const mountRef = useRef(false);
 
 // Component Did Mount only
 
-    useEffect(() => {
-        setDidMount(true);
-        console.log("App Mounted");   
-    }, []);
+    // useEffect(() => {
+    //     setDidMount(true);
+    //     console.log("App Mounted");   
+    // }, []);
 
 // Component Will Update
 
-    useEffect(() => {
-        if (mountRef.current) {
-            console.log("App Updated");
-        } else {
-            mountRef.current = true;
-        }
-    }, [isShowing]);
+    // useEffect(() => {
+    //     if (mountRef.current) {
+    //         console.log("App Updated");
+    //     } else {
+    //         mountRef.current = true;
+    //     }
+    // }, [isShowing]);
 
-    function handleClick() {
-        setIsShowing(!isShowing);
-    }
+    // function handleClick() {
+    //     setIsShowing(!isShowing);
+    // }
 
     return (
-        <section className="justify-center">
-            {console.log('re-rendered')}
-            <div className="flex flex-wrap justify-center">
+        <section className="flex justify-center">
+            <div className="w-full">
                 <div className="text-center">
                     <div className="my-4 text-white italic font-semibold">
                         {title}
                     </div>
-                    <button 
+                    {/* <button 
                         className="my-2 p-2 bg-white text-blue-600 font-bold tracking-normal rounded-full focus:outline-none"
                         onClick={handleClick}
                     >
                         Toogle Image
-                    </button>
+                    </button> */}
+                    <Images />
                 </div>
             </div>
-                {isShowing ? <Images /> : null}
+                {/* {isShowing ? <Images /> : null} */}
         </section>
     );
 }

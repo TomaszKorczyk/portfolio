@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 export default function Images() {
     const [images, setImages] = useState([
@@ -9,14 +9,22 @@ export default function Images() {
         "https://images.unsplash.com/photo-1553978458-e039e4a68999?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
     ]);
 
+    const [newImageUrl, setNewImageUrl] = useState("");
+
+    function handleRemove(index) {
+        setImages(images.filter((image, i) => i !== index))
+    }
+
     function ShowImage() {
-        return images.map((image) => {
+        return images.map((image, index) => {
             return(
-                <div className="w-1/4 flex justify-center">
+                <div className="w-1/4 my-4 flex justify-center" key={index}>
                     <img 
                         src={image} 
                         width="150"
-                        className="h-full p-1"
+                        className="h-full"
+                        alt=""
+                        onClick={() => handleRemove(index)}
                     />
                 </div>
             );
@@ -24,11 +32,21 @@ export default function Images() {
     }
 
     function handleAdd() {
-        setImages([
-            "https://images.unsplash.com/photo-1500989145603-8e7ef71d639e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
-            ...images
-        ]);
+        if (newImageUrl !== "") {
+            setImages([newImageUrl, ...images]);
+            setNewImageUrl("");
+        }
     }
+
+    function handleChange(event) {
+        setNewImageUrl(event.target.value);
+    }
+
+    // function disable() {
+    //     if(newImageUrl !== ""){
+    //         "bg-green-700 rounded w-2/12 overflow-clip button"
+    //     } else "bg-red-300 rounded w-2/12 overflow-clip button"
+    // }
 
     return (
         <section>
@@ -38,10 +56,13 @@ export default function Images() {
             <div className="flex justify-around my-3">
                 <input
                     type="text"
-                    className="p-2 border border-gray-800 shadow rounded w-8/12 h-full"
+                    className="p-2 border border-yellow-800 rounded w-7/12 h-full"
+                    value={newImageUrl}
+                    onChange={handleChange}
                 />
                 <button
-                    className="p-2 bg-green-700 text-white font-bold rounded w-3/12 overflow-clip overflow-hidden"
+                    disabled={newImageUrl === ""}
+                    className="bg-green-700 rounded w-2/12 overflow-clip button" 
                     onClick={handleAdd}
                 >
                     Add new
