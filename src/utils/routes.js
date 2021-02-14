@@ -3,7 +3,7 @@ import Gallery from "../page/Gallery";
 import Home from "../page/Home";
 import Login from "../page/Login";
 
-export default[
+const routes=[
     {
         path: "/",
         exact: true,
@@ -18,3 +18,4 @@ export default[
         component: () => <Login />,
     },
 ];
+export default routes;
