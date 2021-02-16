@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import firebase from "../config/firebase";
 import AppContext from "../store/AppContext";
 
@@ -21,25 +21,55 @@ export default function Header() {
     }
 
     return (
-        <nav className="text-white font-bold tracking-wider py-5 bg-gray-800">
+        <nav className="flex text-white font-bold tracking-wider py-5 bg-gray-800 justify-between">
             <ul className="flex justify-between px-10">
-                <span className="flex">
-                    <li className="mr-5">
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li className="mr-5">
-                        <Link to="/gallery">Gallery</Link>
-                    </li>
-                </span>
-                    <li>
-                        {
-                            isLoggedIn ?
-                            (<button onClick={logout}>Logout</button>) :
-                            (<Link to="/login">Login</Link>)
-                        }
-                    </li>
-                
+                <li className="mr-5">
+                    <NavLink 
+                        to="/" 
+                        exact={true} 
+                        activeClassName="underline text-blue-200"
+                    >
+                        Home
+                    </NavLink>
+                </li>
+                <li className="mr-5">
+                    <NavLink 
+                        to="/gallery" 
+                        activeClassName="underline text-blue-200"
+                    >
+                        Gallery
+                    </NavLink>
+                </li>
             </ul>
-          </nav>
-    )
+            <ul className="flex justify-between px-10">
+                <li>
+                    {isLoggedIn ? (
+                        <button
+                            className="font-bold" 
+                            onClick={logout}
+                        >
+                            Logout
+                        </button>
+                    ) : (
+                        <NavLink 
+                            to="/login" 
+                            activeClassName="underline text-blue-200"
+                        >
+                            Login
+                        </NavLink>
+                    )}
+                </li>                
+                {!isLoggedIn && (
+                    <li className="ml-5">
+                        <NavLink 
+                            to="/signup" 
+                            activeClassName="underline text-blue-200"
+                        >
+                            SignUp
+                        </NavLink>
+                    </li>                
+                )}
+            </ul>
+        </nav>
+    );
 }

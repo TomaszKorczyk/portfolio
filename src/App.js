@@ -7,22 +7,30 @@ import firebase from "./config/firebase";
 import AppContext from "./store/AppContext";
 import AuthRoute from "./utils/routes/AuthRoute";
 import GuestRoute from "./utils/routes/GuestRoute";
+import Loading from "./components/Loading";
+import NotFound from "./page/404";
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
         
     useEffect(() => {
+        setIsLoading(true);
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 setIsLoggedIn(true);
                 setUser(user);
+                setIsLoading(false);
             } else {
                 setUser({});
                 setIsLoggedIn(false);
+                setIsLoading(false);
             }
         });
     }, []);
+
+    if(isLoading) return <Loading />;
 
     return (
         <Router>
@@ -61,6 +69,11 @@ function App() {
                             />
                         );
                     })}
+                    <Route
+                        path="*"
+                    >
+                        <NotFound />
+                    </Route>
                 </Switch>
             </AppContext.Provider>
         </Router>
