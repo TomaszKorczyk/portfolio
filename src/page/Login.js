@@ -30,7 +30,7 @@ export default function Login() {
 
     function handleInput(e) {
         setForm({...form,[e.target.name]: e.target.value});
-        console.log(e.target.value, e.target.name);
+        // console.log(e.target.value, e.target.name);
     }
     
     // if(isLoggedIn) return <Redirect to="/" />;
