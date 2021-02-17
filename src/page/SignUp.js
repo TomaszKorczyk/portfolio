@@ -32,7 +32,7 @@ export default function SignUp() {
             <div className="flex h-screen text-white text-2xl font-bold bg-gray-700">
                 <div className="bg-gradient-to-br from-yellow-900 to-yellow-700 m-auto w-3/5 text-white flex flex-wrap justify-center shadow-lg rounded-lg">
                     <Form className="m-5 w-10/12">
-                        <h1 className="w-full text-4xl tracking-widest text-center my-6">
+                        <h1 className="w-full text-4xl tracking-widest text-center">
                             Sign Up Here
                         </h1>
                         <div className="w-full my-6">

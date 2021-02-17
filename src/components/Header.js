@@ -21,8 +21,8 @@ export default function Header() {
     }
 
     return (
-        <nav className="flex text-white font-bold tracking-wider py-5 bg-gray-800 justify-between">
-            <ul className="flex justify-between px-10">
+        <nav className="flex text-white font-bold tracking-wider p-5 bg-gray-800 justify-between">
+            <ul className="flex justify-between">
                 <li className="mr-5">
                     <NavLink 
                         to="/" 
@@ -41,7 +41,7 @@ export default function Header() {
                     </NavLink>
                 </li>
             </ul>
-            <ul className="flex justify-between px-10">
+            <ul className="flex justify-between">
                 <li>
                     {isLoggedIn ? (
                         <button

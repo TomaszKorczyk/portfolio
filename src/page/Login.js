@@ -32,14 +32,14 @@ export default function Login() {
 
     return(
         <div className="flex h-screen text-white text-2xl font-bold bg-gray-700">
-            <div className="bg-gradient-to-br from-indigo-900 to-indigo-700 m-auto w-3/5 text-white flex flex-wrap justify-center shadow-lg rounded-lg bg">
+            <div className="bg-gradient-to-br from-indigo-900 to-indigo-700 m-auto w-3/5 text-white flex flex-wrap justify-center shadow-lg rounded-lg">
                 <form 
                     className="m-5 w-10/12" 
                     onSubmit={handleForm}
                 >
                     {(error !== "") && <p>{error}</p>}
                     <h1 
-                        className="w-full text-4xl tracking-widest text-center my-6"
+                        className="w-full text-4xl tracking-widest text-center"
                     >
                         Login
                     </h1>
@@ -64,7 +64,7 @@ export default function Login() {
                             onChange={handleInput}
                         />
                     </div>
-                    <div className="w-full my-10">
+                    <div className="w-full my-5">
                         <button 
                             type="submit"
                             className="p-2 rounded shadow w-full bg-gradient-to-tr from-yellow-600 to-yellow-400 text-black font-bold"
