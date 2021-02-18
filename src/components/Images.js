@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from './Image';
 
 export default function Images() {
     const [images, setImages] = useState([
@@ -6,29 +7,29 @@ export default function Images() {
         "https://images.unsplash.com/photo-1595338940653-81c0a91ca5fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80",
         "https://images.unsplash.com/photo-1594394895051-02e2b5a8ab8e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80",
         "https://images.unsplash.com/photo-1551279076-6887dee32c7e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "https://images.unsplash.com/photo-1551279076-6887dee32c7e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
         "https://images.unsplash.com/photo-1553978458-e039e4a68999?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
     ]);
 
     const [newImageUrl, setNewImageUrl] = useState("");
 
     function handleRemove(index) {
-        setImages(images.filter((image, i) => i !== index))
+        // setImages(images.filter((image, i) => i !== index));
+        setImages([
+            ...images.slice(0,index),
+            ...images.slice(index + 1, images.length),
+        ]);
     }
+        
 
     function ShowImage() {
-        return images.map((image, index) => {
-            return(
-                <div className="w-1/4 my-4 flex justify-center" key={index}>
-                    <img 
-                        src={image} 
-                        width="150"
-                        className="h-full"
-                        alt=""
-                        onClick={() => handleRemove(index)}
-                    />
-                </div>
-            );
-        });
+        return images.map((img, index) => 
+            <Image 
+                image={img} 
+                handleRemove={handleRemove} 
+                index={index}
+                key={index}
+            />);
     }
 
     function handleAdd() {
@@ -56,7 +57,13 @@ export default function Images() {
                 />
                 <button
                     disabled={newImageUrl === ""}
-                    className="bg-green-700 rounded w-2/12 overflow-clip button" 
+                    className={`rounded w-2/12 overflow-clip button 
+                    ${
+                        newImageUrl !== "" ? 
+                        "bg-green-700" : 
+                        "bg-red-300"
+                    }
+                    `} 
                     onClick={handleAdd}
                 >
                     Add new
