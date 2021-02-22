@@ -1,7 +1,8 @@
-import React, { /*useEffect, useRef,*/ useState } from 'react';
+import React, { /*useRef, useEffect,*/ useState } from 'react';
 import Image from './Image';
 import useFetchImage from '../utils/hooks/useFetchImage';
 import Loading from './Loading';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function Images() {
     const [page, setPage] = useState(1)
@@ -21,16 +22,25 @@ export default function Images() {
         ...images.slice(index + 1, images.length),
         ]);
     }
-        
 
     function ShowImage() {
-        return images.map((img, index) => 
-            <Image 
-                image={img.urls.regular} 
-                handleRemove={handleRemove} 
-                index={index}
-                key={index}
-            />);
+        return (
+            <InfiniteScroll 
+                dataLength={images.length} 
+                next={() => setPage(page + 1)}
+                hasMore={true}
+                className="flex flex-wrap"
+            > 
+                {images.map((img, index) => ( 
+                    <Image 
+                        image={img.urls.regular} 
+                        handleRemove={handleRemove} 
+                        index={index}
+                        key={index}
+                    />
+                ))}
+            </InfiniteScroll>
+        );
     }
 
     // function handleAdd() {
@@ -44,10 +54,20 @@ export default function Images() {
     //     setNewImageUrl(event.target.value);
     // }    
 
-    if(isLoading) return <Loading />;
+    function handleInput(e) {
+        
+    }
 
     return (
         <section className="text-white">
+            <div className="my-5">
+                <input
+                    type="text"
+                    onChange={handleInput}
+                    className="w-10/12 rounded border-yellow-500 shadow-inner text-black text-center"
+                    placeholder="Search Photos Here"
+                />
+            </div>
             {errors.length > 0 && (
                 <div className="flex h-screen">
                     <p className="m-auto">
@@ -55,12 +75,11 @@ export default function Images() {
                     </p>
                 </div>
             )}
-            <div className="gap-0" style={{columnCount: 5}}>
-                <ShowImage />
-            </div>
-            {errors.length === 0 && (
+            <ShowImage />
+            {isLoading && <Loading />}
+            {/* {errors.length === 0 && (
                 <button onClick={() => setPage(page + 1)}>Load More</button>
-            )}
+            )} */}
             {/* <div className="flex justify-around my-3">
                 <input
                     type="text"
