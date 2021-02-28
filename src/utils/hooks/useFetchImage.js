@@ -9,35 +9,34 @@ export default function useFetchImage(page, searchTerm) {
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        setIsLoading(true);
-        axios.get(
-            `${api}/photos?client_id=${secret}&page=${page}`
-            )
-        .then((res) => {
-            setImages([...images, ...res.data]);
-            setIsLoading(false);
-        })
-        .catch((e) => {
-            setErrors(["Unable to fetch images"]);
-            setIsLoading(false);
-        });
-    }, [page]);
-
-    useEffect(() => {
-        if(searchTerm === null) return;
-        axios.get(
-            `${api}/search/photos?client_id=${secret}&page=${page}&query=${searchTerm}`
-            )
+    function fetch() {
+        const url = 
+            searchTerm === null ? "photos/?" : `search/photos/?query=${searchTerm}&`;
+        axios.get(`${api}/${url}client_id=${secret}&page=${page}`)
             .then((res) => {
-                setImages([...res.data.results]);
+                searchTerm === null ? fetchRandom(res) : fetchSearch(res);            
                 setIsLoading(false);
             })
             .catch((e) => {
                 setErrors(["Unable to fetch images"]);
                 setIsLoading(false);
             });
-    }, [searchTerm]);
+    }
+
+    function fetchSearch(res) {
+        page > 1 
+            ? setImages([...images, ...res.data.results])
+            : setImages([...res.data.results]);
+    }
+
+    function fetchRandom(res) {
+        setImages([...images, ...res.data]);
+    }
+
+    useEffect(() => {
+        setIsLoading(true);
+        fetch();
+    }, [page, searchTerm]);
 
     return [images, setImages, errors, isLoading];
 }
