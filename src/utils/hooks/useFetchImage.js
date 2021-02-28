@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const url = process.env.REACT_APP_UNSPLASH_API;
+const api = process.env.REACT_APP_UNSPLASH_API;
 const secret = process.env.REACT_APP_UNSPLASH_KEY;
 
-export default function useFetchImage(page) {
+export default function useFetchImage(page, searchTerm) {
     const [images, setImages] = useState([]);
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
-        axios.get(`${url}/search/photos/?client_id=${secret}&page=${page}&query=mouse`)
+        axios.get(
+            `${api}/photos?client_id=${secret}&page=${page}`
+            )
         .then((res) => {
-            setImages([...images, ...res.data.results]);
+            setImages([...images, ...res.data]);
             setIsLoading(false);
         })
         .catch((e) => {
@@ -21,6 +23,21 @@ export default function useFetchImage(page) {
             setIsLoading(false);
         });
     }, [page]);
+
+    useEffect(() => {
+        if(searchTerm === null) return;
+        axios.get(
+            `${api}/search/photos?client_id=${secret}&page=${page}&query=${searchTerm}`
+            )
+            .then((res) => {
+                setImages([...res.data.results]);
+                setIsLoading(false);
+            })
+            .catch((e) => {
+                setErrors(["Unable to fetch images"]);
+                setIsLoading(false);
+            });
+    }, [searchTerm]);
 
     return [images, setImages, errors, isLoading];
 }

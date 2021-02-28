@@ -5,8 +5,9 @@ import Loading from './Loading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function Images() {
-    const [page, setPage] = useState(1)
-    const [images, setImages, errors, isLoading] = useFetchImage(page);
+    const [page, setPage] = useState(1);
+    const [searchTerm, setSearchTerm] = useState(null);
+    const [images, setImages, errors, isLoading] = useFetchImage(page, searchTerm);
 
     // const inputRef = useRef(null);
 
@@ -54,17 +55,24 @@ export default function Images() {
     //     setNewImageUrl(event.target.value);
     // }    
 
+    const [typingTimeout, setTypingTimeout] = useState("");
+
     function handleInput(e) {
-        
+        const text = e.target.value;
+        clearTimeout(typingTimeout);
+        const timeout = setTimeout(() => {
+            setSearchTerm(text);
+        }, 1000);
+        setTypingTimeout(timeout);
     }
 
     return (
         <section className="text-white">
-            <div className="my-5">
+            <div className="my-4">
                 <input
                     type="text"
                     onChange={handleInput}
-                    className="w-10/12 rounded border-yellow-500 shadow-inner text-black text-center"
+                    className="w-10/12 p-2 rounded border-yellow-500 shadow-inner text-black text-center"
                     placeholder="Search Photos Here"
                 />
             </div>
