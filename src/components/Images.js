@@ -1,4 +1,4 @@
-import React, { /*useRef, useEffect,*/ useState } from 'react';
+import React, { useState } from 'react';
 import Image from './Image';
 import useFetchImage from '../utils/hooks/useFetchImage';
 import Loading from './Loading';
