@@ -10,9 +10,10 @@ export default function useFetchImage(page, searchTerm) {
     const [isLoading, setIsLoading] = useState(false);
 
     function fetch() {
+        
         const url = 
             searchTerm === null ? "photos/?" : `search/photos/?query=${searchTerm}&`;
-        axios.get(`${api}/${url}client_id=${secret}&page=${page}`)
+        axios.get(`${api}/${url}&client_id=${secret}&page=${page}`)
             .then((res) => {
                 searchTerm === null ? fetchRandom(res) : fetchSearch(res);            
                 setIsLoading(false);

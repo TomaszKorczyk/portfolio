@@ -5,7 +5,7 @@ export default function Image({index, image, handleRemove}) {
     const [isHovering, setIsHovering] = useState(false);
     const [showPreview, setShowPreview] = useState(false);
     return (
-        <div className="w-1/6 p-2 border flex justify-center">
+        <div className="w-1/3 p-2 border flex justify-center">
             <div 
                 className="relative"
                 onMouseEnter={()=>setIsHovering(true)}
@@ -18,6 +18,7 @@ export default function Image({index, image, handleRemove}) {
                 ></i>
                 <img
                     onClick={() => setShowPreview(true)}
+                    className="h-auto"
                     src={image} 
                     alt=""
                 />
