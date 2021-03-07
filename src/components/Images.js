@@ -11,14 +11,6 @@ export default function Images() {
     const [searchTerm, setSearchTerm] = useState(null);
     const [images, setImages, errors, isLoading] = useFetchImage(page, searchTerm);
 
-    // const inputRef = useRef(null);
-
-    // useEffect(() => {
-    //     inputRef.current.focus();
-    // }, []);
-
-    // const [newImageUrl, setNewImageUrl] = useState("");
-
     function handleRemove(index) {
         setImages([
         ...images.slice(0,index),
@@ -75,18 +67,7 @@ export default function Images() {
                 </AnimatePresence>
             </AnimateSharedLayout>
         );
-    }
-
-    // function handleAdd() {
-    //     if (newImageUrl !== "") {
-    //         setImages([newImageUrl, ...images]);
-    //         setNewImageUrl("");
-    //     }
-    // }
-
-    // function handleChange(event) {
-    //     setNewImageUrl(event.target.value);
-    // }    
+    }  
 
     const debounce = useDebounce();
     function handleInput(e) {
@@ -113,32 +94,6 @@ export default function Images() {
             )}
             <ShowImage />
             {isLoading && <Loading />}
-            {/* {errors.length === 0 && (
-                <button onClick={() => setPage(page + 1)}>Load More</button>
-            )} */}
-            {/* <div className="flex justify-around my-3">
-                <input
-                    type="text"
-                    id="inputBox"
-                    ref={inputRef}
-                    className="p-2 border border-yellow-800 rounded w-7/12 h-full"
-                    value={newImageUrl}
-                    onChange={handleChange}
-                />
-                <button
-                    disabled={newImageUrl === ""}
-                    className={`rounded w-2/12 overflow-clip button 
-                    ${
-                        newImageUrl !== "" ? 
-                        "bg-green-700" : 
-                        "bg-red-300"
-                    }
-                    `} 
-                    onClick={handleAdd}
-                >
-                    Add new
-                </button>
-            </div> */}
         </section>
     );
 }
