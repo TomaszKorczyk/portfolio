@@ -33,8 +33,6 @@ export default function Images() {
                             className="w-1/3 p-2 border flex justify-center"
                             key={index}
                             layoutId={img.urls.regular}
-                            initial={{ opacity : 0 }}
-                            animate={{ opacity : 1 }}
                         >
                             <Image
                                 show = {()=> setShowPreview(img.urls.regular)}
