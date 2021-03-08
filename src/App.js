@@ -9,6 +9,7 @@ import AuthRoute from "./utils/routes/AuthRoute";
 import GuestRoute from "./utils/routes/GuestRoute";
 import Loading from "./components/Loading";
 import NotFound from "./page/404";
+import { motion } from "framer-motion";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -44,8 +45,9 @@ function App() {
                                     key={index}
                                     path={route.path}
                                     exact={route.exact}
-                                    component={route.component}
-                                />
+                                >
+                                    <route.component />
+                                </GuestRoute>
                             );
                         } 
                         
@@ -65,8 +67,14 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 exact={route.exact}
-                                component={route.component}
-                            />
+                            >
+                                <motion.div 
+                                    initial={{x:200}}
+                                    animate={{x:0}}
+                                >
+                                    <route.component />
+                                </motion.div>
+                            </Route>
                         );
                     })}
                     <Route

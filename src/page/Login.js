@@ -31,7 +31,7 @@ export default function Login() {
     }
 
     return(
-        <div className="flex h-screen text-white text-2xl font-bold bg-gray-700">
+        <div className="flex h-screen text-white text-2xl font-bold">
             <div className="bg-gradient-to-br from-indigo-900 to-indigo-700 m-auto w-3/5 text-white flex flex-wrap justify-center shadow-lg rounded-lg">
                 <form 
                     className="m-5 w-10/12" 
