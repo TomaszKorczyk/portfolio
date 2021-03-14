@@ -6,12 +6,11 @@ import AnimatedRoute from './AnimatedRoute';
 export default function GuestRoute({children, ...rest}) {
     const [isLoggedIn] = useContext(AppContext);
     
-    if(!isLoggedIn) 
-        return (
-            <AnimatedRoute {...rest}>
-                {children}
-            </AnimatedRoute>
-        );
+    if(!isLoggedIn) return (
+        <AnimatedRoute {...rest}>
+            {children}
+        </AnimatedRoute>
+    );
 
-    return <Redirect to="/" />;
+    return <Redirect to="/portfolio" />;
 }

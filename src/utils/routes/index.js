@@ -6,7 +6,7 @@ import SignUp from "../../page/SignUp";
 
 const routes=[
     {
-        path: "/",
+        path: "/portfolio",
         exact: true,
         component: () => <Home />,
         protected: null,

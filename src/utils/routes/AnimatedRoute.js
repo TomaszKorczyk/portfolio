@@ -6,14 +6,9 @@ export default function AnimatedRoute({children, ...rest}) {
     return (
         <Route {...rest}>
             <motion.div
-                initial={{
-                    x:200,
-                    opacity:0
-                }}
-                animate={{
-                    x:0,
-                    opacity:1
-                }}
+                initial={{x:200}}
+                animate={{x:0}}
+                exit={{scale:0}}
             >
                 {children}
             </motion.div>

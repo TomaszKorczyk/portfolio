@@ -25,7 +25,7 @@ export default function Header() {
             <ul className="flex justify-between">
                 <li className="mr-5">
                     <NavLink 
-                        to="/" 
+                        to="/portfolio" 
                         exact={true} 
                         activeClassName="underline text-blue-200"
                     >

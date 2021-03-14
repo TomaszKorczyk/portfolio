@@ -9,6 +9,7 @@
     }
     body {
         background-color: rgba(55, 65, 81);
+        overflow-x: hidden;
     }
 }
 

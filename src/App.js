@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./assets/css/tailwind.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import routes from "./utils/routes/index";
 import Header from "./components/Header";
 import firebase from "./config/firebase";
@@ -9,7 +9,8 @@ import AuthRoute from "./utils/routes/AuthRoute";
 import GuestRoute from "./utils/routes/GuestRoute";
 import Loading from "./components/Loading";
 import NotFound from "./page/404";
-import { motion } from "framer-motion";
+import AnimatedRoute from "./utils/routes/AnimatedRoute";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,13 +32,15 @@ function App() {
         });
     }, []);
 
+    const location = useLocation();
+
     if(isLoading) return <Loading />;
 
     return (
-        <Router>
-            <AppContext.Provider value={[isLoggedIn, user]}>
-                <Header />
-                <Switch>
+        <AppContext.Provider value={[isLoggedIn, user]}>
+            <Header />
+            <AnimatePresence exitBeforeEnter initial={false}>
+                <Switch key={location.pathname} location={location}>
                     {routes.map((route, index) => {
                         if(route.protected === "guest"){
                             return (
@@ -57,34 +60,28 @@ function App() {
                                     key={index}
                                     path={route.path}
                                     exact={route.exact}
-                                    component={route.component}
-                                />
+                                >
+                                    <route.component />
+                                </AuthRoute>
                             );   
                         } 
-                             
+                                
                         return(
-                            <Route
+                            <AnimatedRoute
                                 key={index}
                                 path={route.path}
                                 exact={route.exact}
                             >
-                                <motion.div 
-                                    initial={{x:200}}
-                                    animate={{x:0}}
-                                >
-                                    <route.component />
-                                </motion.div>
-                            </Route>
+                                <route.component />
+                            </AnimatedRoute>
                         );
                     })}
-                    <Route
-                        path="*"
-                    >
+                    <Route path="*">
                         <NotFound />
                     </Route>
                 </Switch>
-            </AppContext.Provider>
-        </Router>
+            </AnimatePresence>
+        </AppContext.Provider>
     );
 }
 

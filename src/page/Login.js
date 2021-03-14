@@ -16,7 +16,7 @@ export default function Login() {
             .auth()
             .signInWithEmailAndPassword(form.email, form.password)
             .then((res) => {
-                history.replace("/");
+                history.replace("/portfolio");
                 setError("");
                 setIsLoading(false);
             })
