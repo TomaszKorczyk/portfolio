@@ -12,5 +12,9 @@ export default function AuthRoute({children, ...rest}) {
         </AnimatedRoute>
     );
 
-    return <Redirect to="/login" />;
+    return (
+        <AnimatedRoute>
+            <Redirect to="/login" />;
+        </AnimatedRoute>
+    );
 }
