@@ -6,6 +6,8 @@
     "dependencies": {
         "@craco/craco": "^6.0.0",
         "@tailwindcss/postcss7-compat": "^2.0.2",
+        "@tensorflow-models/mobilenet": "^2.1.0",
+        "@tensorflow/tfjs": "^3.3.0",
         "@testing-library/jest-dom": "^5.11.9",
         "@testing-library/react": "^11.2.3",
         "@testing-library/user-event": "^12.6.0",
@@ -19,6 +21,7 @@
         "md": "^0.6.0",
         "postcss": "^7.0.35",
         "postcss-cli": "^8.3.1",
+        "prop-types": "^15.7.2",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-infinite-scroll-component": "^6.0.0",

@@ -3,6 +3,7 @@ import Gallery from "../../page/Gallery";
 import Home from "../../page/Home";
 import Login from "../../page/Login";
 import SignUp from "../../page/SignUp";
+import Tensorflow from "../../page/tensorflow";
 
 const routes=[
     {
@@ -25,6 +26,11 @@ const routes=[
         path: "/signup",
         component: () => <SignUp />,
         protected: "guest",
+    },
+    {
+        path: "/tensorflow",
+        component: () => <Tensorflow />,
+        protected: null,
     },
 ];
 export default routes;

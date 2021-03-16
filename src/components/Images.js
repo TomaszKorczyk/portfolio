@@ -18,54 +18,7 @@ export default function Images() {
         ]);
     }
 
-    function ShowImage() {
-        const [showPreview, setShowPreview] = useState(false);
-        return (
-            <AnimateSharedLayout>
-                <InfiniteScroll 
-                    dataLength={images.length} 
-                    next={() => setPage(page + 1)}
-                    hasMore={true}
-                    className="flex flex-wrap"
-                > 
-                    {images.map((img, index) => ( 
-                        <motion.div 
-                            className="w-1/3 p-2 border flex justify-center"
-                            key={index}
-                            layoutId={img.urls.regular}
-                        >
-                            <Image
-                                show = {()=> setShowPreview(img.urls.regular)}
-                                image={img.urls.regular} 
-                                handleRemove={handleRemove} 
-                                index={index}
-                            />
-                        </motion.div>
-                    ))}
-                </InfiniteScroll>
-                <AnimatePresence>
-                    {showPreview && (
-                        <motion.section
-                            layoutId={showPreview}
-                            exit={{ opacity: 0,  rotate: 360, transition: {duration: 0.5} }}
-                            className="fixed w-full h-full flex justify-center items-center top-0 left-0 z-40"
-                            onClick={() => setShowPreview(false)}
-                        >
-                            <div className="bg-white text-black">
-                                <img
-                                    src={showPreview}
-                                    className="rounded-lg"
-                                    width="300"
-                                    height="auto" 
-                                    alt=""
-                                />
-                            </div>
-                        </motion.section>
-                    )}
-                </AnimatePresence>
-            </AnimateSharedLayout>
-        );
-    }  
+    const [showPreview, setShowPreview] = useState(false);
 
     const debounce = useDebounce();
     function handleInput(e) {
@@ -90,8 +43,50 @@ export default function Images() {
                     </p>
                 </div>
             )}
-            <ShowImage />
-            {isLoading && <Loading />}
+        <AnimateSharedLayout>
+            <InfiniteScroll 
+                dataLength={images.length} 
+                next={() => setPage(page + 1)}
+                hasMore={true}
+                className="flex flex-wrap"
+            > 
+                {images.map((img, index) => ( 
+                    <motion.div 
+                        className="w-1/3 p-2 border flex justify-center"
+                        key={index}
+                        layoutId={img.urls.regular}
+                    >
+                        <Image
+                            show = {()=> setShowPreview(img.urls.regular)}
+                            image={img.urls.regular}
+                            handleRemove={handleRemove} 
+                            index={index}
+                        />
+                    </motion.div>
+                ))}
+            </InfiniteScroll>
+            <AnimatePresence>
+                {showPreview && (
+                    <motion.section
+                        layoutId={showPreview}
+                        exit={{ opacity: 0,  rotate: 360, transition: {duration: 0.5} }}
+                        className="fixed w-full h-full flex justify-center items-center top-0 left-0 z-40"
+                        onClick={() => setShowPreview(false)}
+                    >
+                        <div className="bg-white text-black">
+                            <img
+                                src={showPreview}
+                                className="rounded-lg"
+                                width="300"
+                                height="auto" 
+                                alt=""
+                            />
+                        </div>
+                    </motion.section>
+                )}
+            </AnimatePresence>
+        </AnimateSharedLayout>
+        {isLoading && <Loading />}
         </section>
     );
 }

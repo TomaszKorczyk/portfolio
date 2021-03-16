@@ -12,5 +12,9 @@ export default function GuestRoute({children, ...rest}) {
         </AnimatedRoute>
     );
 
-    return <Redirect to="/portfolio" />;
+    return(
+        <AnimatedRoute>
+            <Redirect to="/portfolio" />;
+        </AnimatedRoute>
+    );
 }

@@ -26,7 +26,7 @@ export default function Header() {
                 <li className="mr-5">
                     <NavLink 
                         to="/portfolio" 
-                        exact={true} 
+                        exact 
                         activeClassName="underline text-blue-200"
                     >
                         Home
@@ -34,10 +34,20 @@ export default function Header() {
                 </li>
                 <li className="mr-5">
                     <NavLink 
-                        to="/gallery" 
+                        to="/gallery"
+                        strict 
                         activeClassName="underline text-blue-200"
                     >
                         Gallery
+                    </NavLink>
+                </li>
+                <li className="mr-5">
+                    <NavLink
+                        to="/tensorflow" 
+                        strict
+                        activeClassName="underline text-blue-200"
+                    >
+                        Tensorflow
                     </NavLink>
                 </li>
             </ul>
